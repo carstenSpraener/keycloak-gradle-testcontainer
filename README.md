@@ -68,7 +68,6 @@ You can add this method to your container configuration by:
 ```
 ### A special debugPort-Method
 
-Talking about debugging: The XKeycloakContainer has a special method to set a debug port. The `withDebugPort`-Method will mapp a given intern port ti a fixed outside port. This is normaly not a good idea because you can not be shure, that the port is free on the machine running the tests. 
+Talking about debugging: The XKeycloakContainer has a special method to set a debug port. The `withDebugPort`-Method will map a given intern port to a fixed outside port. This is normally not a good idea because you can not be sure, that the port is free on the machine running the tests. 
 
 But for debugging you need to know which port to connect to. Use this method do define a port which is reachable from the outside for debugging purpose.
-
