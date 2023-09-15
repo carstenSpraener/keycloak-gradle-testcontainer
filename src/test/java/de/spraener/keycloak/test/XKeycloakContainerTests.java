@@ -18,7 +18,7 @@ public class XKeycloakContainerTests {
     @Container
     private static final XKeycloakContainer testContainer = new XKeycloakContainer()
             // add remote debugging configuration to the container
-            .withConfigurationModifier(this::configureDebug)
+            .withConfigurationModifier(XKeycloakContainerTests::configureDebug)
             // add the gradle classes dir (test) to the providers jar
             .withProviderJarContentModifier( i -> i.importDirectory("build/classes/java/test"))
             // add the gradle resource dir (test) to the providers jar
@@ -30,7 +30,7 @@ public class XKeycloakContainerTests {
      * @param ekc // An ExtendableKeycloakContainer
      * @param commandParts // A list of CommandParts for the container. Add options here
      */
-    private void configureDebug(ExtendableKeycloakContainer<?> ekc, List<String> commandParts) {
+    private static void configureDebug(ExtendableKeycloakContainer<?> ekc, List<String> commandParts) {
         // Set the Environment-Variable "DEBUG_PORT" to the required port
         ekc.withEnv("DEBUG_PORT", "*:8787");
         // The port needs to be exported to a fixed address. This is only possible
