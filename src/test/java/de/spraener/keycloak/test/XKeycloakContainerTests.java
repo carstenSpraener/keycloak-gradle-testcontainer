@@ -17,12 +17,14 @@ public class XKeycloakContainerTests {
     // Let JUnit manage the container
     @Container
     private static final XKeycloakContainer testContainer = new XKeycloakContainer()
-            // add remote debugging configuration to the container
-            .withConfigurationModifier(XKeycloakContainerTests::configureDebug)
             // add the gradle classes dir (test) to the providers jar
+            // NOTE! Normally this is the build/classes/main directory!
             .withProviderJarContentModifier( i -> i.importDirectory("build/classes/java/test"))
             // add the gradle resource dir (test) to the providers jar
+            // NOTE! Normally this is the build/resources/main directory!
             .withProviderJarContentModifier( i -> i.importDirectory("build/resources/test"))
+            // add remote debugging configuration to the container
+            .withConfigurationModifier(XKeycloakContainerTests::configureDebug)
             ;
 
     /**
